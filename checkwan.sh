@@ -1,5 +1,5 @@
 #!/bin/sh
-#脚本放/bin目录，再用命令运行nohup sh /bin/checkwan  1>/dev/null 2>&1 &
+#脚本放/bin目录，再用命令运行nohup sh /bin/checkwan.sh  1>/dev/null 2>&1 &
 
 echo '脚本检测开始'
 tries=0
