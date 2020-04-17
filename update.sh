@@ -304,6 +304,9 @@ cd /mnt/img
 if [ -f /tmp/upload/update.sh ]; then
 	cp	/tmp/upload/update.sh /mnt/img/bin/
 	echo -e '\e[92m写入升级脚本\e[0m'
+elif [ -f /mnt/mmcblk0p2/update.sh ]; then
+	cp	/mnt/mmcblk0p2/update.sh /mnt/img/bin/
+	echo -e '\e[92m写入升级脚本\e[0m'
 elif [ -f /bin/update.sh ]; then
 	cp	/bin/update.sh /mnt/img/bin/
 	echo -e '\e[92m写入升级脚本\e[0m'
