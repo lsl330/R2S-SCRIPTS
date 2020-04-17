@@ -312,8 +312,8 @@ elif [ -f /bin/update.sh ]; then
 	echo -e '\e[92m写入升级脚本\e[0m'
 fi
 if [ $checknet -eq 1 ]; then   #写入防掉线脚本（开机启动）
-	wget -nv https://github.com/lsl330/R2S-SCRIPTS/raw/master/check_wan.sh -O /mnt/img/bin/check_wan.sh
-	chmod +x check_wan.sh
+	wget -nv https://github.com/lsl330/R2S-SCRIPTS/raw/master/checkwan.sh -O /mnt/img/bin/checkwan.sh
+	chmod +x /mnt/img/bin/checkwan.sh
 	wget -nv https://github.com/lsl330/R2S-SCRIPTS/raw/master/check  -O /etc/init.d/check
 	chmod 777 /etc/init.d/check
 	ln -s /etc/init.d/check /etc/rc.d/rc3.d/S95check
