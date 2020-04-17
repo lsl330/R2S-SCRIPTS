@@ -316,7 +316,7 @@ if [ $checknet -eq 1 ]; then   #写入防掉线脚本（开机启动）
 	chmod +x /mnt/img/bin/checkwan.sh
 	wget -nv https://github.com/lsl330/R2S-SCRIPTS/raw/master/check  -O /etc/init.d/check
 	chmod 777 /etc/init.d/check
-	ln -s /etc/init.d/check /etc/rc.d/rc3.d/S95check
+	ln -s /etc/init.d/check /etc/rc.d/S95check
 	cp	/etc/init.d/check /mnt/img/etc/init.d/check
 	cp -d /etc/rc.d/S95check /mnt/img/etc/rc.d/S95check
 fi
