@@ -19,9 +19,9 @@ while [ $rom -eq 0 ]
 		echo
 		echo " 5. 本地升级（固件以zip或img.gz格式放在/tmp/upload目录，优先判定zip格式）"
 		echo
-		echo " 6. 输入固件下载地址（只支持zip格式）"
+		echo " 6. 输入固件下载地址（只支持R2S开头的zip格式）"
 		echo
-		echo " 7. 输入固件下载地址（只支持img.gz格式）"
+		echo " 7. 输入固件下载地址（只支持Friendly开头的img.gz格式）"
 		echo
 		echo " 8. 退出"
 		echo
@@ -128,7 +128,8 @@ while [ $mode -eq 0 ]
 		esac
 	done
 
-cp update.sh /tmp/upload/
+chmod +x update.sh
+cp -f update.sh /mnt/mmcblk0p2/; #对update文件的简单处理，使网络运行的脚本可以直接写入更新后的固件中，下次直接输入update.sh即可使用
 cd /mnt/mmcblk0p2
 echo '检查依赖文件...'
 if ! type "unzip" > /dev/null; then
@@ -308,9 +309,9 @@ elif [ -f /bin/update.sh ]; then
 	echo -e '\e[92m写入升级脚本\e[0m'
 fi
 if [ $checknet -eq 1 ]; then   #写入防掉线脚本（开机启动）
-	wget https://github.com/lsl330/R2S-SCRIPTS/raw/master/check_wan.sh -O /mnt/img/bin/check_wan.sh
+	wget -nv https://github.com/lsl330/R2S-SCRIPTS/raw/master/check_wan.sh -O /mnt/img/bin/check_wan.sh
 	chmod +x check_wan.sh
-	wget https://github.com/lsl330/R2S-SCRIPTS/raw/master/check  -O /etc/init.d/check
+	wget -nv https://github.com/lsl330/R2S-SCRIPTS/raw/master/check  -O /etc/init.d/check
 	chmod 777 /etc/init.d/check
 	ln -s /etc/init.d/check /etc/rc.d/rc3.d/S95check
 	cp	/etc/init.d/check /mnt/img/etc/init.d/check
