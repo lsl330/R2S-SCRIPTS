@@ -17,11 +17,11 @@ while [ $rom -eq 0 ]
 		echo
 		echo " 4. 升级R2S-opt（ardanzhu编译）"
 		echo
-		echo " 5. 本地升级（固件以zip或img.gz格式放在/tmp/upload目录，优先判定zip格式）"
+		echo " 5. 本地升级（固件以R2S*.zip或Friendly*.img.gz格式放在/tmp/upload目录，优先判定zip格式）"
 		echo
-		echo " 6. 输入固件下载地址（只支持R2S开头的zip格式）"
+		echo " 6. 输入zip格式固件下载地址"
 		echo
-		echo " 7. 输入固件下载地址（只支持Friendly开头的img.gz格式）"
+		echo " 7. 输入img.gz格式固件下载地址"
 		echo
 		echo " 8. 退出"
 		echo
