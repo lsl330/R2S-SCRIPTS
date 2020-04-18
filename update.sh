@@ -128,8 +128,7 @@ while [ $mode -eq 0 ]
 		esac
 	done
 
-if [ -d /mnt/mmcblk0p2 ]; then #部分固件没有挂载/dev/mmcblk0p2分区，增加一个简单检测
-else
+if [  ! -d /mnt/mmcblk0p2 ] ; then #部分固件没有挂载/dev/mmcblk0p2分区，增加一个简单检测
 	mkdir /mnt/mmcblk0p2
 	mount /dev/mmcblk0p2 /mnt/mmcblk0p2
 fi
