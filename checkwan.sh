@@ -22,8 +22,7 @@ else
 	fi
 	if [ $tries -ge 5 ]; then #连续ping dns 5次失败，重启wan口
 		tries = 0
-		/sbin/ifup wan
-		/sbin/ifup lan
+		/etc/init.d/network restart
 	fi
 fi
 sleep 2
