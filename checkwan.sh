@@ -4,7 +4,7 @@
 echo '脚本检测开始'
 tries=0
 wan=`ifconfig |grep inet| sed -n '1p'|awk '{print $2}'|awk -F ':' '{print $2}'`
-while test "1" = "1"
+while true
 do
 # do something
 if ping -w 1 -c 1 119.29.29.29; then #ping dns通则
@@ -23,6 +23,7 @@ else
 	if [ $tries -ge 5 ]; then #连续ping dns 5次失败，重启wan口
 		tries = 0
 		/sbin/ifup wan
+		/sbin/ifup lan
 	fi
 fi
 sleep 2
