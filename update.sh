@@ -128,6 +128,11 @@ while [ $mode -eq 0 ]
 		esac
 	done
 
+if [ -d /mnt/mmcblk0p2 ]; then #部分部件没有挂载/dev/mmcblk0p2分区，增加一个简单检测
+else
+	mkdir /mnt/mmcblk0p2
+	mount /dev/mmcblk0p2 /mnt/mmcblk0p2
+fi
 chmod +x update.sh
 cp -f update.sh /mnt/mmcblk0p2/; #对update文件的简单处理，使网络运行的脚本可以直接写入更新后的固件中，下次直接输入update.sh即可使用
 cd /mnt/mmcblk0p2
