@@ -262,7 +262,7 @@ if [ $rom -eq 5 ]; then	#上传本地rom
 		mv /tmp/upload/R2S*.zip /mnt/mmcblk0p2/
 	elif [ -f /tmp/upload/Friendly*.img.gz ]; then	 #检测upload目录是否有img.gz升级文件
 		suffix=2
-		mv /tmp/upload/Friendly*.zip /mnt/mmcblk0p2/FriendlyWrt-ROM.img.gz
+		mv /tmp/upload/Friendly*.img.gz /mnt/mmcblk0p2/FriendlyWrt-ROM.img.gz
 	elif [ -f /mnt/mmcblk0p2/R2S*.zip ]; then  #检测upload目录是否有升级文件
 		echo -e '\e[92m找到本地固件，准备解压\e[0m'
 	else
