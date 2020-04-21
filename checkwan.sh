@@ -23,6 +23,7 @@ else
 	if [ $tries -ge 5 ]; then #连续ping dns 5次失败，重启wan口
 		tries=0
 		/etc/init.d/network restart
+		sleep 5
 	fi
 fi
 sleep 2
