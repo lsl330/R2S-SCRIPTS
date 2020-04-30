@@ -195,12 +195,12 @@ fi
 rm -rf artifact R2S*.zip FriendlyWrt*img*
 
 if [ $rom -eq 1 ]; then	#下载R2S-Minimal固件
-	wget https://github.com/klever1988/nanopi-openwrt/releases/download/R2S-Minimal-$(date +%Y-%m-%d)/R2S-Minimal-$(date +%Y-%m-%d)-ROM.zip
+	wget https://github.com/klever1988/nanopi-openwrt/releases/download/R2S-Minimal-$(date +%Y-%m-%d)/R2S-Minimal-$(date +%Y-%m-%d)-ROM.zip -O /mnt/mmcblk0p2/R2S-ROM.zip
 	if [ -f /mnt/mmcblk0p2/R2S*.zip ]; then
 		echo -e '\e[92m今天固件已下载，准备解压\e[0m'
 	else
 		echo '今天的固件还没更新，尝试下载昨天的固件'
-		wget https://github.com/klever1988/nanopi-openwrt/releases/download/R2S-Minimal-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d)/R2S-Minimal-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d)-ROM.zip
+		wget https://github.com/klever1988/nanopi-openwrt/releases/download/R2S-Minimal-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d)/R2S-Minimal-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d)-ROM.zip -O /mnt/mmcblk0p2/R2S-ROM.zip
 		if [ -f /mnt/mmcblk0p2/R2S*.zip ]; then
 			echo -e '\e[92m昨天的固件已下载，准备解压\e[0m'
 		else
@@ -211,12 +211,12 @@ if [ $rom -eq 1 ]; then	#下载R2S-Minimal固件
 fi
 
 if [ $rom -eq 2 ]; then	#下载R2S-Lean固件
-	wget https://github.com/klever1988/nanopi-openwrt/releases/download/R2S-Lean-$(date +%Y-%m-%d)/R2S-Lean-$(date +%Y-%m-%d)-ROM.zip
+	wget https://github.com/klever1988/nanopi-openwrt/releases/download/R2S-Lean-$(date +%Y-%m-%d)/R2S-Lean-$(date +%Y-%m-%d)-ROM.zip -O /mnt/mmcblk0p2/R2S-ROM.zip
 	if [ -f /mnt/mmcblk0p2/R2S*.zip ]; then
 		echo -e '\e[92m今天固件已下载，准备解压\e[0m'
 	else
 		echo '今天的固件还没更新，尝试下载昨天的固件'
-		wget https://github.com/klever1988/nanopi-openwrt/releases/download/R2S-Lean-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d)/R2S-Lean-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d)-ROM.zip
+		wget https://github.com/klever1988/nanopi-openwrt/releases/download/R2S-Lean-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d)/R2S-Lean-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d)-ROM.zip -O /mnt/mmcblk0p2/R2S-ROM.zip
 		if [ -f /mnt/mmcblk0p2/R2S*.zip ]; then
 			echo -e '\e[92m昨天的固件已下载，准备解压\e[0m'
 		else
@@ -227,12 +227,12 @@ if [ $rom -eq 2 ]; then	#下载R2S-Lean固件
 fi
 
 if [ $rom -eq 3 ]; then	#下载R2S-slim固件
-	wget https://github.com/ardanzhu/Opwrt_Actions/releases/download/R2S/R2S-slim-$(date +%Y-%m-%d).zip
+	wget https://github.com/ardanzhu/Opwrt_Actions/releases/download/R2S/R2S-slim-$(date +%Y-%m-%d).zip -O /mnt/mmcblk0p2/R2S-ROM.zip
 	if [ -f /mnt/mmcblk0p2/R2S*.zip ]; then
 		echo -e '\e[92m今天固件已下载，准备解压\e[0m'
 	else
 		echo -e '\e[91m今天的固件还没更新，尝试下载昨天的固件\e[0m'
-		wget https://github.com/ardanzhu/Opwrt_Actions/releases/download/R2S/R2S-slim-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d).zip
+		wget https://github.com/ardanzhu/Opwrt_Actions/releases/download/R2S/R2S-slim-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d).zip -O /mnt/mmcblk0p2/R2S-ROM.zip
 		if [ -f /mnt/mmcblk0p2/R2S*.zip ]; then
 			echo -e '\e[92m昨天的固件已下载，准备解压\e[0m'
 		else
@@ -243,12 +243,12 @@ if [ $rom -eq 3 ]; then	#下载R2S-slim固件
 fi
 
 if [ $rom -eq 4 ]; then	#下载R2S-opt固件
-	wget https://github.com/ardanzhu/Opwrt_Actions/releases/download/R2S/R2S-opt-$(date +%Y-%m-%d).zip
+	wget https://github.com/ardanzhu/Opwrt_Actions/releases/download/R2S/R2S-opt-$(date +%Y-%m-%d).zip -O /mnt/mmcblk0p2/R2S-ROM.zip
 	if [ -f /mnt/mmcblk0p2/R2S*.zip ]; then
 		echo -e '\e[92m今天固件已下载，准备解压\e[0m'
 	else
 		echo -e '\e[91m今天的固件还没更新，尝试下载昨天的固件\e[0m'
-		wget https://github.com/ardanzhu/Opwrt_Actions/releases/download/R2S/R2S-opt-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d).zip
+		wget https://github.com/ardanzhu/Opwrt_Actions/releases/download/R2S/R2S-opt-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d).zip -O /mnt/mmcblk0p2/R2S-ROM.zip
 		if [ -f /mnt/mmcblk0p2/R2S*.zip ]; then
 			echo -e '\e[92m昨天的固件已下载，准备解压\e[0m'
 		else
