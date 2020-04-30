@@ -29,6 +29,15 @@ while [ $checknet -eq 0 ]
 			;;
 		esac
 	done
+	
+echo '检查依赖文件...'
+if ! type "nohup" > /dev/null; then
+	opkg update ; opkg install coreutils-nohup
+	if ! type "nohup" > /dev/null; then
+		echo 'nohup安装失败，退出...'
+		exit 1
+	fi
+fi
 
 if [ $checknet -le 2 ]; then   #写入防掉线脚本
 	wget -nv https://github.com/lsl330/R2S-SCRIPTS/raw/master/checkwan.sh -O /bin/checkwan.sh
