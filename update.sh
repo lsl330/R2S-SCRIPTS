@@ -93,7 +93,7 @@ while [ $checknet -eq 0 ]
 		echo " 3. 不写入"
 		echo
 		echo
-		read -p "$(echo -e "请选择 [\e[95m1-2\e[0m]，默认为3:")" checknet
+		read -p "$(echo -e "请选择 [\e[95m1-3\e[0m]，默认为3:")" checknet
 		[[ -z $checknet ]] && mode="3"
 		case $checknet in
 		1)
