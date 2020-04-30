@@ -60,18 +60,22 @@ while [ $backup -eq 0 ]
 	do
 		echo
 		echo "...........欢迎使用 R2S 一键升级脚本.........."
-		echo " 1. 升级保留配置"
+		echo " 1. 升级保留配置（同系列的固件直接升级推荐使用）"
 		echo
-		echo " 2. 升级不保留配置"
+		echo " 2. 特殊保留模式（只保留网口配置、防火墙、端口转发、DDNS和SSRP的数据，方便跨版本刷机）"
+		echo
+		echo " 3. 升级不保留配置"
 		echo
 		echo
-		read -p "$(echo -e "请选择 [\e[95m1-2\e[0m]，默认为1:")" backup
+		read -p "$(echo -e "请选择 [\e[95m1-3\e[0m]，默认为1:")" backup
 		[[ -z $backup ]] && backup="1"
 		case $backup in
 		1)
 			backup=1;;
 		2)
 			backup=2;;
+		3)
+			backup=3;
 		*)
 			backup=0
 			echo
@@ -346,6 +350,18 @@ if [ $backup -eq 1 ]; then
 	tar zxf back.tar.gz
 	echo -e '\e[92m备份文件已经写入，移除挂载\e[0m'
 	rm back.tar.gz
+elif [ $backup -eq 2 ]; then
+	cp -f /etc/config/network /mnt/img/etc/config/; #网络配置文件
+	cp -f /etc/config/ddns /mnt/img/etc/config/; #ddns配置文件
+	cp -f /etc/passwd /mnt/img/etc/; #账号文件配置文件
+	cp -f /etc/shadow /mnt/img/etc/; #账号密码配置文件	
+	cp -f /etc/config/ddns /mnt/img/etc/config/; #ddns配置文件
+	cp -f /etc/config/firewall /mnt/img/etc/config/; #防火墙及端口转发配置文件
+	cp -f /etc/config/shadowsocksr /mnt/img/etc/config/; #ssrp配置文件
+	cp -f /etc/config/netflixip.list /mnt/img/etc/config/; #ssrp配置文件
+	cp -f /etc/china_ssr.txt /mnt/img/etc/; #ssrp配置文件
+	mkdir /mnt/img/etc/dnsmasq.ssr; #ssrp配置文件
+	cp -f /etc/dnsmasq.ssr/gfw_list.conf /mnt/img/etc/dnsmasq.ssr/; #ssrp配置文件
 else
 	echo -e '\e[92m升级文件已经写入，移除挂载\e[0m'
 fi
