@@ -75,7 +75,7 @@ while [ $backup -eq 0 ]
 		2)
 			backup=2;;
 		3)
-			backup=3;
+			backup=3;;
 		*)
 			backup=0
 			echo
