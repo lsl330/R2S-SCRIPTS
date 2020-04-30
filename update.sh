@@ -355,7 +355,6 @@ elif [ $backup -eq 2 ]; then
 	rm -rf /mnt/img/etc/board.d
 	cp -f /etc/board.d /mnt/img/etc/
 	cp -f /etc/board.json /mnt/img/etc/
-	cp -f /bin/board_detect /mnt/img/bin/
 	cp -f /etc/config/ddns /mnt/img/etc/config/; #ddns配置文件
 	cp -f /etc/passwd /mnt/img/etc/; #账号文件配置文件
 	cp -f /etc/shadow /mnt/img/etc/; #账号密码配置文件	
