@@ -47,6 +47,7 @@ if [ $checknet -le 2 ]; then   #写入防掉线脚本
 		chmod +x /bin/restartnetwork.sh
 		wget -nv https://github.com/lsl330/R2S-SCRIPTS/raw/master/check2  -O /etc/init.d/check
 		if `ps | grep restartnetwork.sh |grep /|cut -d % -f2`; then
+			sleep 2
 			nohup sh /bin/restartnetwork.sh  1>/dev/null 2>&1 &
 			echo '检测到网络重启脚本未运行，现已运行脚本'
 		else
@@ -58,6 +59,7 @@ if [ $checknet -le 2 ]; then   #写入防掉线脚本
 	chmod 777 /etc/init.d/check
 	ln -s /etc/init.d/check /etc/rc.d/S95check
 	if `ps | grep checkwan.sh |grep /|cut -d % -f2`; then
+		sleep 1
 		nohup sh /bin/checkwan.sh  1>/dev/null 2>&1 &
 		echo '检测到防断线脚本未运行，现已运行脚本'
 	else
