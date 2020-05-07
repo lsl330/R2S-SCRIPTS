@@ -171,7 +171,7 @@ if ! type "losetup" > /dev/null; then
 		exit 1
 	fi
 fi
-if [ $mode -eq 1 || $mode -eq 3 ]; then 
+if [ $mode -eq 1 ] || [ $mode -eq 3 ]; then 
 	if ! type "pigz" > /dev/null; then
 		if [ -f /www/pigz_2.4-1_aarch64_cortex-a53.ipk ]; then
 		opkg install /www/pigz_2.4-1_aarch64_cortex-a53.ipk
