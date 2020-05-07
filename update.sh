@@ -122,14 +122,18 @@ while [ $mode -eq 0 ]
 		echo
 		echo " 2. 使用zstd刷机（理论上，更新成功率更高）"
 		echo
+		echo " 3. 不刷机，只保留上述修改的刷机文件（可以此制作适合自己已保留配置的刷机镜像，卡刷时救砖用）"
+		echo		
 		echo
-		read -p "$(echo -e "请选择 [\e[95m1-2\e[0m]，默认为2:")" mode
-		[[ -z $mode ]] && mode="2"
+		read -p "$(echo -e "请选择 [\e[95m1-3\e[0m]，默认为3:")" mode
+		[[ -z $mode ]] && mode="3"
 		case $mode in
 		1)
 			mode=1;;
 		2)
 			mode=2;;
+		3)
+			mode=3;;
 		*)
 			mode=0
 			echo
@@ -167,9 +171,8 @@ if ! type "losetup" > /dev/null; then
 		exit 1
 	fi
 fi
-if [ $mode -eq 1 ]; then 
+if [ $mode -eq 1 -o $mode -eq 3]; then 
 	if ! type "pigz" > /dev/null; then
-		
 		if [ -f /www/pigz_2.4-1_aarch64_cortex-a53.ipk ]; then
 		opkg install /www/pigz_2.4-1_aarch64_cortex-a53.ipk
 		elif [ -f /tmp/upload/pigz_2.4-1_aarch64_cortex-a53.ipk ]; then
@@ -372,6 +375,12 @@ cd /tmp
 umount /mnt/img
 losetup -d /dev/loop0
 echo -e '\e[92m准备重新打包\e[0m'
+if [ $mode -eq 3 ]; then
+	mkdir /tmp/upload
+	pv /mnt/mmcblk0p2/FriendlyWrt.img | pigz --fast > /tmp/upload/FriendlyWrtupdate.img.gz
+	echo -e '\e[92m刷机镜像已保存在/tmp/upload目录，请及时导出\e[0m'
+	exit 1
+fi
 if [ $mode -eq 1 ]; then
 	pv /mnt/mmcblk0p2/FriendlyWrt.img | pigz --fast > /tmp/FriendlyWrtupdate.img.gz
 else
