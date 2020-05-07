@@ -377,7 +377,7 @@ losetup -d /dev/loop0
 echo -e '\e[92m准备重新打包\e[0m'
 if [ $mode -eq 3 ]; then
 	mkdir /tmp/upload
-	pv /mnt/mmcblk0p2/FriendlyWrt.img | pigz --fast > /tmp/upload/FriendlyWrtupdate.img.gz
+	pv /mnt/mmcblk0p2/FriendlyWrt.img | pigz > /tmp/upload/FriendlyWrtupdate.img.gz
 	echo -e '\e[92m刷机镜像已保存在/tmp/upload目录，请及时导出\e[0m'
 	exit 1
 fi
