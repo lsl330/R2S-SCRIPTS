@@ -1,7 +1,7 @@
 #!/bin/sh
 
-rom=0; 	#rom值若为0，则会出现可选菜单，也可手动改为1-3，将不会出现选项
-backup=0; 	#backup值若为0，则会出现可选菜单，也可手动改为1-3，将不会出现选项
+rom=0; 	#rom值若为0，则会出现可选菜单，也可手动改为1-7，将不会出现选项
+backup=0; 	#backup值若为0，则会出现可选菜单，也可手动改为1-4，将不会出现选项
 mode=0; 	#mode值若为0，则会出现可选菜单，也可手动改为1-3，将不会出现选项
 checknet=0; 	#checknet值若为0，则会出现可选菜单，也可手动改为1-3，将不会出现选项
 suffix=1; 	#判定升级文件名后缀，无需改动，保持1即可
@@ -69,7 +69,7 @@ while [ $backup -eq 0 ]
 		echo " 4. 直接刷机"
 		echo
 		echo
-		read -p "$(echo -e "请选择 [\e[95m1-3\e[0m]，默认为1:")" backup
+		read -p "$(echo -e "请选择 [\e[95m1-4\e[0m]，默认为1:")" backup
 		[[ -z $backup ]] && backup="1"
 		case $backup in
 		1)
