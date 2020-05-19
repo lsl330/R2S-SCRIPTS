@@ -165,7 +165,6 @@ else
 	volume=/tmp/upload
 	mkdir $volume
 	cd $volume
-	mode=1
 fi
 echo '检查依赖文件...'
 if ! type "unzip" > /dev/null; then
