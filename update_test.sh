@@ -89,8 +89,6 @@ while [ $backup -eq 0 ]
 		esac
 	done
 if [ $backup -ne 4 ]; then
-	volume=/mnt/mmcblk0p2
-  
 	while [ $way -eq 0 ]
 		do
 			echo
@@ -128,15 +126,19 @@ if [ $backup -ne 4 ]; then
  if [ $way -eq 1 ]; then
   offset=100663296
   volume=/mnt/mmcblk0p2
+  disk=/dev/mmcblk0p2
  elif [ $way -eq 2 ]; then
   offset=67108864
   volume=/mnt/mmcblk0p2
+  disk=/dev/mmcblk0p2
  elif [ $way -eq 3 ]; then
   offset=100663296
-  volume=/opt
+  volume=/mnt/mmcblk0p3
+  disk=/dev/mmcblk0p3
  elif [ $way -eq 4 ]; then
   offset=67108864
-  volume=/opt
+  volume=/mnt/mmcblk0p3
+  disk=/dev/mmcblk0p3
  fi
 
 if [ $way -eq 1 ] || [ $way -eq 3 ]; then
@@ -201,7 +203,7 @@ fi
 
 	if [  ! -d $volume ] ; then #部分固件没有挂载/dev/mmcblk0p2分区，增加一个简单检测
 		mkdir $volume
-		mount /dev/mmcblk0p2 $volume
+		mount $disk $volume
 	fi
 	chmod +x update.sh
 	cp -f update.sh $volume/; #对update文件的简单处理，使网络运行的脚本可以直接写入更新后的固件中，下次直接输入update.sh即可使用
