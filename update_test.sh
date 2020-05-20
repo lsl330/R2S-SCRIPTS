@@ -97,11 +97,11 @@ if [ $backup -ne 4 ]; then
 			echo		
 			echo " 1. 友善固件到友善固件"
 			echo
-			echo " 2. 友善固件到原版固件"
+			echo " 2. 友善固件到原生固件"
  			echo		
-			echo " 3. 原版固件到友善固件"
+			echo " 3. 原生固件到友善固件"
 			echo
-			echo " 4. 原版固件到原版固件（建议直接用固件内部升级）"     
+			echo " 4. 原生固件到原生固件（纯粹无聊，建议直接用固件内部升级）"     
 			echo
 			echo
 			read -p "$(echo -e "请选择 [\e[95m1-4\e[0m]，默认为1:")" way
