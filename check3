@@ -1,0 +1,8 @@
+#!bin/sh /etc/rc.common  
+#/init.d/my-test
+ 
+START=95
+
+start(){        
+    nohup sh /bin/restartnetwork.sh  1>/dev/null 2>&1 &
+}
